@@ -68,7 +68,7 @@ def sigmoid(x: float) -> float:
     if x >= 0:
         return 1 / (1 + math.e ** (-x))
     else:
-        ex = math.e ** x
+        ex = math.e**x
         return ex / (1 + ex)
 
 
@@ -113,6 +113,7 @@ def relu_back(x: float, d: float) -> float:
     r"If $f = relu$ compute $d \times f'(x)$"
     return d * (x > 0)
 
+
 # ## Task 0.3
 
 # Small practice library of elementary higher-order functions.
@@ -131,8 +132,10 @@ def map(fn: Callable[[float], float]) -> Callable[[Iterable[float]], Iterable[fl
          A function that takes a list, applies `fn` to each element, and returns a
          new list
     """
+
     def func(array):
         return [fn(x) for x in array]
+
     return func
 
 
@@ -157,8 +160,10 @@ def zipWith(
          applying fn(x, y) on each pair of elements.
 
     """
+
     def func(array1, array2):
         return [fn(x, y) for x, y in zip(array1, array2)]
+
     return func
 
 
@@ -182,11 +187,13 @@ def reduce(
          $x_1 \ldots x_n$ and computes the reduction :math:`fn(x_3, fn(x_2,
          fn(x_1, x_0)))`
     """
+
     def func(array):
         result = start
         for x in array:
             result = fn(x, result)
         return result
+
     return func
 
 

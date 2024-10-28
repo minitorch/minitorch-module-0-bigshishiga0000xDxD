@@ -51,7 +51,7 @@ class Module:
         """
         result = list(self.__dict__["_parameters"].items())
         for module_name, module in self.__dict__["_modules"].items():
-            result += [(f'{module_name}.{k}', v) for k, v in module.named_parameters()]
+            result += [(f"{module_name}.{k}", v) for k, v in module.named_parameters()]
         return result
 
     def parameters(self) -> Sequence[Parameter]:

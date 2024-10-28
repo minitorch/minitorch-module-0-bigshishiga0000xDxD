@@ -14,6 +14,7 @@ def mul(x: float, y: float) -> float:
     "$f(x, y) = x * y$"
     return x * y
 
+
 def id(x: float) -> float:
     "$f(x) = x$"
     return x
@@ -33,9 +34,11 @@ def lt(x: float, y: float) -> float:
     "$f(x) =$ 1.0 if x is less than y else 0.0"
     return float(x < y)
 
+
 def eq(x: float, y: float) -> float:
     "$f(x) =$ 1.0 if x is equal to y else 0.0"
     return float(x == y)
+
 
 def max(x: float, y: float) -> float:
     "$f(x) =$ x if x is greater than y else y"
@@ -44,9 +47,11 @@ def max(x: float, y: float) -> float:
     else:
         return y
 
+
 def is_close(x: float, y: float) -> float:
     "$f(x) = |x - y| < 1e-2$"
     return abs(x - y) < 1e-2
+
 
 def sigmoid(x: float) -> float:
     r"""
@@ -65,6 +70,7 @@ def sigmoid(x: float) -> float:
     else:
         ex = math.e ** x
         return ex / (1 + ex)
+
 
 def relu(x: float) -> float:
     """
@@ -91,6 +97,7 @@ def exp(x: float) -> float:
 def log_back(x: float, d: float) -> float:
     r"If $f = log$ as above, compute $d \times f'(x)$"
     return d / x
+
 
 def inv(x: float) -> float:
     "$f(x) = 1/x$"

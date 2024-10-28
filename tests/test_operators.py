@@ -113,7 +113,8 @@ def test_sigmoid(a: float, b: float) -> None:
     if a < b:
         assert sigmoid(a) <= sigmoid(b)
     elif a > b:
-        assert sigmoid(a) >= sigmoid(b) 
+        assert sigmoid(a) >= sigmoid(b)
+
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)

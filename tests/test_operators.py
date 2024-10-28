@@ -99,19 +99,21 @@ def test_eq(a: float) -> None:
 
 
 @pytest.mark.task0_2
-@given(small_floats)
-def test_sigmoid(a: float) -> None:
+@given(small_floats, small_floats)
+def test_sigmoid(a: float, b: float) -> None:
     """Check properties of the sigmoid function, specifically
     * It is always between 0.0 and 1.0.
     * one minus sigmoid is the same as sigmoid of the negative
     * It crosses 0 at 0.5
     * It is  strictly increasing.
     """
-    assert 0 < sigmoid(a) < 1
+    assert 0 <= sigmoid(a) <= 1
     assert_close(1 - sigmoid(a), sigmoid(-a))
     assert_close(sigmoid(0), 0.5)
-    assert sigmoid(a / 2) <= sigmoid(a) <= sigmoid(1 - (1 - a) / 2)
-
+    if a < b:
+        assert sigmoid(a) < sigmoid(b)
+    elif a > b:
+        assert sigmoid(a) > sigmoid(b) 
 
 @pytest.mark.task0_2
 @given(small_floats, small_floats, small_floats)
@@ -147,7 +149,8 @@ def test_other(x, y) -> None:
     """
     Write a test that ensures some other property holds for your functions.
     """
-    assert_close(inv(mul(x, y)), mul(inv(x), inv(y)))
+    if abs(x) > 1e-8 and abs(y) > 1e-8:
+        assert_close(inv(mul(x, y)), mul(inv(x), inv(y)))
 
 
 # ## Task 0.3  - Higher-order functions

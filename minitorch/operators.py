@@ -179,6 +179,7 @@ def reduce(
         result = start
         for x in array:
             result = fn(x, result)
+        return result
     return func
 
 
